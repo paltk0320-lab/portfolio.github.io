@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Portfolio</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header, section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    header {
+      padding-top: 120px;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      max-width: 720px;
+    }
+
+    .cta {
+      margin-top: 32px;
+      display: inline-block;
+      padding: 12px 24px;
+      border: 1px solid #333;
+      text-decoration: none;
+      color: #333;
+    }
+
+    /* ===== Cards ===== */
+
+    .portfolio-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      display: block;
+      padding: 20px;
+      border-radius: 12px;
+      background: #fff;
+      color: #222;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .card-image {
+      aspect-ratio: 16 / 9;
+      background: #f2f2f2;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* ===== Detail ===== */
+
+    .work-detail {
+      display: none;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      border-top: 1px solid #eee;
+    }
+
+    .work-detail.is-active {
+      display: block;
+    }
+
+
+
+
+    .fix-slider {
+  margin-bottom: 120px;
+}
+
+.fix-window {
+  overflow: hidden;
+  width: 100%;
+}
+
+.fix-track {
+  display: flex;
+  transition: transform .4s ease;
+}
+
+.fix-slide {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+}
+
+
+.ba {
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px; */
+  margin: 24px 0;
+
+}
+
+.ba img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.ba span {
+  font-size: 15px;
+  display: block;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+
+
+
+
+
+
+.case {
+  margin-top: 32px;
+  padding: 24px;
+  background: #f7f7f7;
+  border-radius: 12px;
+}
+
+.case-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.case-block + .case-block {
+  margin-top: 20px;
+}
+
+.case-block h5 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.case-block ul {
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+.case-result {
+  margin-top: 20px;
+  margin-bottom: 80px;
+  font-size: 14px;
+  color: #555;
+}
+
+.fix-nav{
+  margin-bottom: 50px;
+}
+
+.fix-nav button{padding: 10px 15px;}
+
+
+
+
+.case {
+  margin-top: 32px;
+}
+
+.case-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.case-summary {
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.case-summary p {
+  margin-bottom: 30px;
+  line-height: 1.7;
+}
+
+.case-summary strong {
+  color: #000;
+}
+
+.case-block h3{
+  margin-top: 70px;
+  border: 1px solid #000;
+}
+
+.note {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #616161;
+}
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>
+    ユーザー視点で考える<br>
+    課題解決を軸にしたデザイン
+  </h1>
+  <p>
+    進学情報サイトにてWebデザイナーとして3年間従事。<br>
+    ユーザー体験を軸とし、CV率向上を意識したデザインを行ってきました。
+  </p>
+  <a href="#works" class="cta">Case Studyを見る</a>
+</header>
+
+<section id="works">
+  <h2>Works</h2>
+
+  <div class="portfolio-cards">
+    <a class="card" data-target="ux" href="#detail">
+      <div class="card-image">
+        <img src="" alt="デザイン改修事例のモックアップ">
+      </div>
+      <h3 class="card-title">UX改善を目的としたデザイン改修</h3>
+      <p class="card-text">
+        導線と情報構造を見直し、迷わず行動できる体験を目指したデザイン事例
+      </p>
+    </a>
+
+    <a class="card" data-target="content" href="#detail">
+      <div class="card-image">
+        <img src="" alt="コンテンツ制作のモックアップ">
+      </div>
+      <h3 class="card-title">コンテンツの作成</h3>
+      <p class="card-text">
+        情報収集・構成設計・ライティングからページ制作まで一貫して手がけた事例。
+      </p>
+    </a>
+
+    <!-- <a class="card" data-target="banner" href="#detail">
+      <div class="card-image">
+        <img src="" alt="バナー・ビジュアルデザイン">
+      </div>
+      <h3 class="card-title">バナー・ビジュアルデザイン</h3>
+      <p class="card-text">
+        目的や訴求に合わせて制作したバナー・ビジュアルデザインのまとめ。
+      </p>
+    </a> -->
+  </div>
+</section>
+
+<section id="detail">
+
+  <div class="work-detail is-active" id="ux">
+    <h2>UX改善を目的としたデザイン改修</h2>
+    <p>
+
+      【サイト内容】<br>
+      ターゲット：高校2、3年生とその保護者<br>
+      サイト内容：TOPページ（リンク一覧）その下に各学校のイベント日程や魅力紹介等申し込みページ<br>
+      ゴール：学校イベントへの申し込み<br><br>
+
+      【課題】<br>
+      ・CV率の向上<br>
+      ・温度感の高いユーザーの育成→来年度のCVに繋げる
+      
+    </p>
+    <p class="case-result">
+      改善前後でGoogleアナリティクスを確認したところ、ページ滞在時間・スクロール量・各学校詳細ページへのクリック率に改善傾向が見られた。
+    </p>
+    <div class="fix-slider">
+
+      <div class="fix-nav">
+        <button class="is-active" onclick="goTo(0)">修正①</button>
+        <button onclick="goTo(1)">修正②</button>
+        <button onclick="goTo(2)">修正③</button>
+      </div>
+    
+      <div class="fix-window">
+        <div class="fix-track">
+    
+          <div class="fix-slide">
+            <h3>修正① リンクデザイン</h3>
+            <div class="ba">
+              <div>
+                <span>Before</span>
+                <img src="img/design2.png">
+              </div>
+              <div class="case-block">
+                <h5>問題点</h5>
+                <ul>
+                  <li>情報の優先度が整理されておらず、どこから見ればよいか分かりにくい</li>
+                  <li>カード全体がリンクであることが直感的に伝わりづらい</li>
+                  <li>学校ごとの魅力が伝わりにくく、ユーザーの興味を引きにくい</li>
+                  <li>色数が多く、視線が分散してしまっている</li>
+                </ul>
+              </div>
+              <div>
+                <span>After</span>
+                <img src="img/design1.png">
+              </div>
+            </div>
+
+          
+            <div class="case-block">
+              <h5>改善内容</h5>
+              <ul>
+                <li>一覧画面での比較を前提とし、Z型の視線導線を意識して右下にCTAを配置</li>
+                <li>主張が強すぎた分野名は写真の近くに配置し、枠で囲うことで視認性を担保</li>
+                <li>カード型UIを採用し、「1カード＝1学校」の構造を明確化</li>
+                <li>学校の魅力を2〜3行で要約し、「…」で詳細ページへの遷移を促進</li>
+                <li>背景色によるグルーピングでコントラストを強め、視認性を改善</li>
+              </ul>
+            </div>
+          
+
+          </div>
+    
+          <div class="fix-slide">
+            <h3>修正② 温度感に応じたCV設計</h3>
+            <div class="ba">
+              <div>
+                <img src="img/design3.png">
+              </div>
+            </div>
+            <div class="case-summary">
+              <p>
+                <strong>目的：</strong>
+                将来的なイベント参加につながる、温度感の高いユーザーを育成すること。
+              </p>
+          
+              <p>
+                <strong>想定ユーザー：</strong>
+                イベント参加までは至らないが学校に興味を持ち始めた高校生や、
+                子どもに学校を勧めたいと考えている保護者。
+              </p>
+          
+              <p>
+                <strong>施策：</strong>
+                行動ハードルの低い<strong>パンフレット請求</strong>をCVとして設置。
+              </p>
+          
+              <p>
+                <strong>意図：</strong>
+                いきなりイベント参加を促すのではなく、
+                次年度以降の参加につながる接点を作るため。
+              </p>
+          
+              <p>
+                <strong>判断理由：</strong>
+                イベント参加前にパンフレットを請求したいというニーズが一定数存在するため。
+              </p>
+
+              <p class="note">
+                <strong>留意点：</strong>
+                優先順位はイベント参加。パンフレット請求はサイト下部に配置し、
+                イベント参加に至らなかったユーザーを拾い上げる役割とした。
+              </p>
+            </div>
+          </div>
+    
+          <div class="fix-slide">
+            <h3>修正③ CTAの視認性改善</h3>
+            <div class="ba">
+              <div>
+                <span>Before</span>
+                <img src="before-3.png">
+              </div>
+              <div>
+                <span>After</span>
+                <img src="after-3.png">
+              </div>
+            </div>
+            <p>配色とサイズを調整し行動喚起を強化。</p>
+          </div>
+    
+        </div>
+      </div>
+    
+    </div>
+    
+    
+    
+    
+  </div>
+
+<!---------------->
+
+  <div class="work-detail" id="content">
+    <h2>サイト内コンテンツの作成</h2>
+    <p>
+      情報収集・構成設計・ライティング・ページ制作までを一貫して担当。<br>
+      
+    </p>
+    <section class="content-case">
+
+      <!-- 概要 -->
+      <div class="case-summary">
+        <h2>サイト内コンテンツの作成</h2>
+        <p class="role">
+          担当範囲：情報収集 / 構成設計 / ライティング / ページ制作
+        </p>
+      </div>
+    
+      <!-- 目的 -->
+      <div class="case-block">
+        <h3>目的</h3>
+        <p>
+          高校生・保護者が進学分野について理解を深められる
+          読み物コンテンツとしての充実を図ること。
+          あわせて、志願者が集まりづらい分野の魅力を可視化し、
+          進路の選択肢として関心を持ってもらうことを目的とする。
+        </p>
+        <p class="note">
+          ※ ユーザー価値を高めることで、SEO評価の向上を図る。
+        </p>
+      </div>
+    
+      <!-- 課題 -->
+      <div class="case-block">
+        <h3>課題</h3>
+        <ul>
+          <li>専門的で内容が伝わりづらい</li>
+          <li>分野の魅力や将来像が想像しにくい</li>
+          <li>検索流入はあるが、回遊につながりにくい</li>
+        </ul>
+      </div>
+    
+      <!-- 工夫・プロセス -->
+      <div class="case-block">
+        <h3>取り組み・工夫</h3>
+    
+        <div class="process-list">
+          <div class="process-item">
+            <h4>情報収集</h4>
+            <p>
+              検索クエリや問い合わせ内容をもとに、
+              ユーザーが不安に感じやすいポイントを整理。
+            </p>
+          </div>
+    
+          <div class="process-item">
+            <h4>構成設計</h4>
+            <p>
+              「不安 → 魅力 → 将来像」の流れで、
+              読み進めるほど理解が深まる構成を設計。
+            </p>
+          </div>
+    
+          <div class="process-item">
+            <h4>ライティング</h4>
+            <p>
+              専門用語を避け、具体例を交えて
+              分野の魅力が伝わる表現を意識。
+            </p>
+          </div>
+    
+          <div class="process-item">
+            <h4>ページ制作</h4>
+            <p>
+              見出しだけでも内容が把握できるよう、
+              可読性と回遊性を考慮して実装。
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- 制作物 -->
+      <div class="case-block">
+        <h3>制作したページ</h3>
+        <img src="content-page.png" alt="制作ページ全体のキャプチャ">
+      </div>
+    
+      <!-- 成果 -->
+      <div class="case-block">
+        <h3>成果・学び</h3>
+        <ul>
+          <li>検索流入・滞在時間が改善傾向</li>
+          <li>対象分野ページへの回遊が増加</li>
+          <li>情報設計が理解度と行動に直結することを実感</li>
+        </ul>
+      </div>
+    
+    </section>
+    
+  </div>
+
+
+
+
+  <div class="work-detail" id="banner">
+    <h2>バナー・ビジュアルデザイン</h2>
+    <p>
+      サービスやキャンペーンの目的に合わせて制作した<br>
+      バナー・ビジュアルデザインをまとめています。
+    </p>
+  </div>
+
+</section>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const details = document.querySelectorAll('.work-detail');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const target = card.dataset.target;
+
+      details.forEach(detail => {
+        detail.classList.remove('is-active');
+      });
+
+      document.getElementById(target).classList.add('is-active');
+    });
+  });
+</script>
+
+<script>
+  const track = document.querySelector('.fix-track');
+  const buttons = document.querySelectorAll('.fix-nav button');
+
+  function goTo(i) {
+    track.style.transform = `translateX(-${i * 100}%)`;
+
+    buttons.forEach(b => b.classList.remove('is-active'));
+    buttons[i].classList.add('is-active');
+  }
+</script>
+
+</body>
+</html>

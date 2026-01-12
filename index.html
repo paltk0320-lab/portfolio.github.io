@@ -234,7 +234,16 @@
 
 .case-block h3{
   margin-top: 70px;
-  border: 1px solid #000;
+}
+
+.case-block .flex{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.case-block .flex img{
+  max-width: 200px;
 }
 
 .note {
@@ -242,6 +251,103 @@
   font-size: 13px;
   color: #616161;
 }
+
+
+
+
+
+
+.site-intro {
+      display: flex;
+      gap: 32px;
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 24px;
+      border-radius: 8px;
+    }
+
+    .site-image {
+      flex: 0 0 320px; /* 左側の幅 */
+    }
+
+    .site-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .site-text {
+      flex: 1;
+    }
+
+    .site-text h2 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .site-text dl {
+      margin: 0;
+    }
+
+    .site-text dt {
+      font-weight: bold;
+      margin-top: 16px;
+    }
+
+    .site-text dd {
+      margin: 8px 0 0 0;
+      line-height: 1.6;
+    }
+
+
+
+
+    .portfolio-description {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.8;
+}
+
+.site-title {
+  font-size: 24px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid #2bb7b3;
+  padding-bottom: 8px;
+}
+
+/* .desc-list {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  row-gap: 20px;
+} */
+
+.desc-list dt {
+  font-weight: bold;
+  color: #2bb7b3;
+}
+
+.desc-list dd {
+  margin: 0;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      .site-intro {
+        flex-direction: column;
+      }
+
+      .site-image {
+        flex: none;
+        max-width: 100%;
+      }
+    }
 
   </style>
 </head>
@@ -318,16 +424,42 @@
     <div class="fix-slider">
 
       <div class="fix-nav">
-        <button class="is-active" onclick="goTo(0)">修正①</button>
-        <button onclick="goTo(1)">修正②</button>
-        <button onclick="goTo(2)">修正③</button>
+        <button class="is-active" onclick="goTo(0)">改修箇所①</button>
+        <button onclick="goTo(1)">改修箇所②</button>
+        <button onclick="goTo(2)">追加要素</button>
       </div>
     
       <div class="fix-window">
         <div class="fix-track">
     
+
+    
           <div class="fix-slide">
-            <h3>修正① リンクデザイン</h3>
+            <h3>改修箇所①　導線の改善</h3>
+            <div class="ba">
+              <div>
+                <span>Before</span>
+                <img src="" alt="改修前ワイヤーフレーム画像">
+              </div>
+              <div>
+                <span>After</span>
+                <img src="" alt="改修後ワイヤーフレーム画像">
+              </div>
+            </div>
+            <div class="case-block">
+              <h5>改修内容</h5>
+              <ul>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est repellat accusamus dolores. Quasi aperiam autem exercitationem molestiae! Quibusdam, voluptatem nulla.</li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est repellat accusamus dolores. Quasi aperiam autem exercitationem molestiae! Quibusdam, voluptatem nulla.</li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est repellat accusamus dolores. Quasi aperiam autem exercitationem molestiae! Quibusdam, voluptatem nulla.</li>
+                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est repellat accusamus dolores. Quasi aperiam autem exercitationem molestiae! Quibusdam, voluptatem nulla.</li>
+
+              </ul>
+            </div>
+          </div>
+
+          <div class="fix-slide">
+            <h3>改修箇所① リンクデザイン</h3>
             <div class="ba">
               <div>
                 <span>Before</span>
@@ -362,7 +494,7 @@
           
 
           </div>
-    
+
           <div class="fix-slide">
             <h3>修正② 温度感に応じたCV設計</h3>
             <div class="ba">
@@ -406,20 +538,7 @@
             </div>
           </div>
     
-          <div class="fix-slide">
-            <h3>修正③ CTAの視認性改善</h3>
-            <div class="ba">
-              <div>
-                <span>Before</span>
-                <img src="before-3.png">
-              </div>
-              <div>
-                <span>After</span>
-                <img src="after-3.png">
-              </div>
-            </div>
-            <p>配色とサイズを調整し行動喚起を強化。</p>
-          </div>
+
     
         </div>
       </div>
@@ -436,99 +555,76 @@
   <div class="work-detail" id="content">
     <h2>サイト内コンテンツの作成</h2>
     <p>
-      情報収集・構成設計・ライティング・ページ制作までを一貫して担当。<br>
+      担当範囲：情報収集 / 構成設計 / ライティング / ページ制作<br>
       
     </p>
-    <section class="content-case">
+    <div class="content-case">
 
-      <!-- 概要 -->
-      <div class="case-summary">
-        <h2>サイト内コンテンツの作成</h2>
-        <p class="role">
-          担当範囲：情報収集 / 構成設計 / ライティング / ページ制作
-        </p>
-      </div>
-    
-      <!-- 目的 -->
-      <div class="case-block">
-        <h3>目的</h3>
-        <p>
-          高校生・保護者が進学分野について理解を深められる
-          読み物コンテンツとしての充実を図ること。
-          あわせて、志願者が集まりづらい分野の魅力を可視化し、
-          進路の選択肢として関心を持ってもらうことを目的とする。
-        </p>
-        <p class="note">
-          ※ ユーザー価値を高めることで、SEO評価の向上を図る。
-        </p>
-      </div>
-    
-      <!-- 課題 -->
-      <div class="case-block">
-        <h3>課題</h3>
-        <ul>
-          <li>専門的で内容が伝わりづらい</li>
-          <li>分野の魅力や将来像が想像しにくい</li>
-          <li>検索流入はあるが、回遊につながりにくい</li>
-        </ul>
-      </div>
-    
-      <!-- 工夫・プロセス -->
-      <div class="case-block">
-        <h3>取り組み・工夫</h3>
-    
-        <div class="process-list">
-          <div class="process-item">
-            <h4>情報収集</h4>
-            <p>
-              検索クエリや問い合わせ内容をもとに、
-              ユーザーが不安に感じやすいポイントを整理。
-            </p>
-          </div>
-    
-          <div class="process-item">
-            <h4>構成設計</h4>
-            <p>
-              「不安 → 魅力 → 将来像」の流れで、
-              読み進めるほど理解が深まる構成を設計。
-            </p>
-          </div>
-    
-          <div class="process-item">
-            <h4>ライティング</h4>
-            <p>
-              専門用語を避け、具体例を交えて
-              分野の魅力が伝わる表現を意識。
-            </p>
-          </div>
-    
-          <div class="process-item">
-            <h4>ページ制作</h4>
-            <p>
-              見出しだけでも内容が把握できるよう、
-              可読性と回遊性を考慮して実装。
-            </p>
-          </div>
-        </div>
-      </div>
     
       <!-- 制作物 -->
       <div class="case-block">
         <h3>制作したページ</h3>
-        <img src="content-page.png" alt="制作ページ全体のキャプチャ">
+        <div class="site-intro">
+          <div class="site-image">
+            <img src="img/design5.png" alt="サイトのスクリーンショット">
+          </div>
+      
+          <div class="portfolio-description">
+
+            <h1 class="site-title">
+              語学・観光・ウェディング分野 特集ページ
+            </h1>
+          
+            <dl class="desc-list">
+              <dt>サイト名</dt>
+              <dd>
+                語学・観光・ウェディング分野が学べる専門学校特集
+              </dd>
+          
+              <dt>対象</dt>
+              <dd>
+                進路を検討し始めた高校生およびその保護者
+              </dd>
+          
+              <dt>目的</dt>
+              <dd>
+                語学・観光・ウェディング分野に対する理解を深め、分野への関心喚起から
+                専門学校一覧ページへの回遊を促進すること。
+                また、生徒獲得が伸び悩んでいる分野の認知強化およびSEO流入の受け皿としての役割も担っている。
+              </dd>
+          
+              <dt>導線設計</dt>
+              <dd>
+                ファーストビューで分野全体の魅力を伝えた後、職種紹介を通して具体的な仕事イメージを持たせ、
+                最終的に専門学校一覧へ遷移させる段階的な導線を設計。
+                検討意欲の高いユーザー向けには、ページ上部に学校一覧へのCTAを配置し、
+                情報収集中のユーザーには読み物コンテンツを通して理解を深めた上で回遊できる構成としている。
+              </dd>
+          
+              <dt>トップバナーの意図・コピー説明</dt>
+              <dd>
+                「女性も活躍中」というコピーと人物写真を用いることで、
+                対象ユーザーが自分ごととして捉えやすい入口を意識。
+                語学・観光・ウェディングという複数分野を並列で見せることで、
+                将来の選択肢の広がりを直感的に伝えることを目的としている。
+              </dd>
+          
+              <dt>デザインについて</dt>
+              <dd>
+                職種ごとの情報はカード型UIで整理し、視線移動を抑えつつ比較しやすいレイアウトを採用。
+                配色やアイコンを職種ごとに変えることで情報の識別性を高め、
+                長文になりがちな説明も視覚的に読み進めやすい設計としている。
+                全体的に親しみやすさを意識し、進路検討初期層でも心理的ハードルを感じにくいトーンにまとめた。
+              </dd>
+            </dl>
+          
+          </div>
+          
+        </div>
+        
       </div>
     
-      <!-- 成果 -->
-      <div class="case-block">
-        <h3>成果・学び</h3>
-        <ul>
-          <li>検索流入・滞在時間が改善傾向</li>
-          <li>対象分野ページへの回遊が増加</li>
-          <li>情報設計が理解度と行動に直結することを実感</li>
-        </ul>
-      </div>
-    
-    </section>
+    </div>
     
   </div>
 

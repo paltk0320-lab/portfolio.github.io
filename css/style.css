@@ -1,234 +1,535 @@
 @charset "utf-8";
-/*
-  Josh W. Comeau's Custom CSS Reset
-  www.joshwcomeau.com
-*/
 
-/* ボックスモデルの修正：余白や境界線が幅を壊さないようにする */
-*, *::before, *::after {box-sizing: border-box;}
+/* ==========================================================================
+   1. Reset & Base Settings
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
 
-* {margin: 0;padding: 0;}
-
-/* メディア要素（画像など）がはみ出さないようにし、ブロック要素化する */
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
 
-/* フォーム要素が親のフォント設定を無視するのを防ぐ */
-input, button, textarea, select {font: inherit;}
+a { text-decoration: none; }
+input, button, textarea, select { font: inherit; }
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 
-/* 6. 長い単語が画面からはみ出して横スクロールが出るのを防ぐ */
-p, h1, h2, h3, h4, h5, h6 {overflow-wrap: break-word;}
+body {
+  color: var(--text-main);
+  background-color: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Quicksand', 'Noto Sans JP', sans-serif;
+  letter-spacing: 0.08em; 
+  line-height: 1.8;
+  font-size: 14px;
+}
 
 
+/* ==========================================================================
+   2. Variables
+   ========================================================================== */
 :root {
-  --primary-color: #59afbc;
+  --primary-color: #70b3b6;
   --text-main: #333;
   --text-sub: #555;
-  --bg-light: #f7f9f9;
-  --border-color: #eee;
+  --bg-light: #fffefc;
+  --border-color: #f7f2f3;
   --white: #fff;
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", sans-serif;
-  color: var(--text-main);
-  line-height: 1.8;
-  background-color: var(--white);
-  overflow-x: hidden;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+/* ==========================================================================
+   3. Body & Global Layout
+   ========================================================================== */
+
+
+section { padding: 15px; }
+.main { padding: 24px; max-width: 1000px; margin: 0 auto; }
+
+/* フェードイン演出 */
+.fadein {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  /* チラつき防止 */
+  backface-visibility: hidden;
+  will-change: opacity, transform;
 }
 
-/* ===== Layout ===== */
-header, section {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 80px 24px;
+.fadein.scrollin {
+  opacity: 1;
+  transform: translateY(0);
+  text-align: center;
 }
 
-header { padding-top: 120px; }
-
-h1 { font-size: clamp(24px, 5vw, 36px); line-height: 1.4; margin-bottom: 24px; }
-h2 { font-size: 28px; margin-bottom: 32px; border-bottom: 2px solid var(--primary-color); display: inline-block; padding-bottom: 4px; }
-h3 { font-size: 20px; margin-bottom: 16px; color: var(--primary-color); }
-h4 { font-size: 17px;margin-bottom: 10px;}
-
+.border {
+  display: block;
+  max-width: 60%;
+  border-bottom: 1px solid #bcbcbc;
+  margin: 0 auto 50px;
+}
 .cta {
   display: inline-block;
   padding: 12px 32px;
-  background: var(--text-main);
-  color: var(--white);
+  background: #545454; /* 元のグレー */
+  color: #fff;
   text-decoration: none;
   border-radius: 4px;
   font-weight: bold;
   margin-top: 24px;
-  transition: var(--transition);
+  transition: all 0.3s ease; /* アニメーション速度 */
 }
-.cta:hover { background: var(--primary-color); }
 
-/* ===== Portfolio Cards ===== */
+/* ホバー時のデザイン */
+.cta:hover {
+  background: var(--primary-color); /* 水色に変化 */
+  transform: translateY(-3px);     /* 少し上に浮く */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 軽い影 */
+}
+/* ==========================================================================
+   4. Header & Navigation
+   ========================================================================== */
+header { position: relative; }
+
+header img.header-kuma {
+    position: absolute;
+    right: 40px;
+    bottom: 20px;
+    width: 160px;
+    height: auto;
+    z-index: 10;
+    pointer-events: none;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
+  padding-top: 100px;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: none;
+  z-index: 100;
+}
+
+nav a {
+  display: block;
+  line-height: 80px;
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+}
+
+nav a:hover {
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+#burger {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: 5px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 101;
+}
+
+#burger span {
+  position: absolute;
+  width: 36px; /* 長さを固定して安定させる */
+  height: 2px;
+  background: #9a9a9a;
+  transition: all 0.4s;
+  left: 12px; /* 中央に配置 */
+}
+
+/* 通常時の3本線の位置 */
+#burger span:nth-child(1) { top: 22px; }
+#burger span:nth-child(2) { top: 30px; }
+#burger span:nth-child(3) { top: 38px; }
+
+/* MENUの文字 */
+#burger span:nth-child(4) {
+  top: 44px;
+  left: 0;
+  width: 100%;
+  font-size: 10px;
+  color: #5e5c5b;
+  background: transparent;
+  text-align: center;
+  border: none;
+}
+
+/* ★アクティブ時（×印）の形を整える */
+#burger.active span:nth-child(1) {
+  top: 30px; /* 2本目の位置に合わせる */
+  transform: rotate(45deg);
+}
+
+#burger.active span:nth-child(2) {
+  opacity: 0; /* 真ん中の線を消す */
+}
+
+#burger.active span:nth-child(3) {
+  top: 30px; /* 2本目の位置に合わせる */
+  transform: rotate(-45deg);
+}
+
+/* 2. MENU文字の高さ修正 */
+#burger span:nth-child(4) {
+  height: auto; /* 棒の高さ2pxを解除 */
+  top: 46px;    /* 位置微調整 */
+  left: 0;
+  width: 100%;
+  font-size: 10px;
+  color: #5e5c5b;
+  background: transparent;
+  text-align: center;
+}
+
+/* TOPボタン */
+.top-btn {
+  position: fixed;
+  right: 25px; bottom: 25px;
+  width: 45px; height: 45px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center; justify-content: center;
+  transition: var(--transition);
+  opacity: 0; visibility: hidden;
+  z-index: 9999;
+}
+
+.top-btn::after {
+  content: "";
+  width: 10px; height: 10px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  transform: translateY(2px) rotate(45deg);
+}
+
+.top-btn.is-show { opacity: 1; visibility: visible; }
+
+/* ==========================================================================
+   5. Hero (Wave)
+   ========================================================================== */
+   .wave-box {
+    width: 100%; 
+    height: 100vh;        /* 画面いっぱいの高さに設定 */
+    position: relative;   /* 中の波（.wave）を配置する基準点 */
+    overflow: hidden;     /* 枠からはみ出した大きな円を見えないように隠す */
+    background: #fdfdfd;  /* 背景のベースカラー */
+    margin-bottom: 30px;
+  }
+  
+  .wave {
+    position: absolute;
+    /* 画面上部（マイナス方向）に大きく配置し、下の角だけが画面に見えるようにする */
+    top: -85%; 
+    left: 50%;
+    width: 1150px; 
+    height: 1150px;       /* 画面よりはるかに大きなサイズで円を作る */
+    margin-left: -600px;  /* 左右中央に寄せるための調整 */
+    background: radial-gradient(#e5f5f9, #45bfc8fa 43%, #f7fbfbf2 80%);
+    border-radius: 44%; 
+    opacity: .4;          /* 重なりが見えるように透明度を下げる */
+    /* drift（回転）アニメーションを7秒かけて一定速度で永久に繰り返す */
+    animation: drift 8000ms infinite linear;
+    will-change: transform;
+  }
+  
+  /* 2枚目の波：1枚目よりさらにゆっくり、かつ薄い色で奥行きを出す */
+  .wave.-two { 
+    animation-duration: 10000ms; /* 10秒かけて1回転 */
+    opacity: .1; 
+    background: rgb(237, 234, 214); /* 少しベージュ系の色を混ぜて複雑な色味に */
+  }
+  
+  /* 3枚目の波：一番速く動かして、水面のランダムな動きを表現 */
+  .wave.-three { 
+    animation-duration: 12000ms; /* 12秒かけて1回転*/
+  }
+
+.title {
+  position: absolute;
+  top: 220px; width: 100%;
+  text-align: center;
+  color: #fff;
+  letter-spacing: 0.7em;
+  font-size: 40px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.title span { font-size: 18px; }
+h2{margin-bottom: 30px;}
+/* ==========================================================================
+   6. Skills & Cards
+   ========================================================================== */
+
+h3 {
+  color: var(--primary-color);
+  margin: 50px 0 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.5rem;
+}
+
+h3::before {
+  content: "";
+  width: 30px; height: 1px;
+  background-color: #6d6d6d;
+}
+
+.skill-list { display: flex; flex-direction: column; gap: 20px; }
+.skill-item {
+  display: flex;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.skill-category {
+  position: relative;
+  width: 280px; min-height: 180px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: bold;
+}
+
+.skill-category span {
+  position: relative; z-index: 2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  font-size: 1.1rem;
+}
+
+.category-bg-image {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: cover; background-position: center;
+  filter: brightness(0.6);
+}
+
+.skill-category.design .category-bg-image { background-image: url('../img/img2.jpg'); }
+.skill-category.management .category-bg-image { background-image: url('../img/img3.jpg'); }
+.skill-category.operation .category-bg-image { background-image: url('../img/img1.jpg'); }
+
+.skill-description { flex: 1; padding: 45px 35px; text-align-last: left;}
+.skill-description ul { list-style: none; }
+.skill-description li { margin-bottom: 15px; }
+.skill-description strong { display: block; color: #333; margin-bottom: 5px;font-size: 1rem; }
+.skill-description span { font-size: 0.85rem; color: #666; }
+
+.tool-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.tool-tags span {
+  background: #f3f3f3;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: #555;
+}
+
+
+
 .portfolio-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
 }
 
-.card {
-  text-decoration: none;
-  color: inherit;
-  border: 1px solid var(--border-color);
+.portfolio-cards a {
   border-radius: 12px;
   overflow: hidden;
+  border: 1px solid var(--border-color);
   transition: var(--transition);
-  cursor: pointer;
-}
-.card:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-.card-image { aspect-ratio: 16 / 9; background: #f2f2f2; }
-.card-image img { width: 100%; height: 100%; object-fit: cover; }
-.card-content { padding: 24px; }
-
-
-
-
-
-/* ===== Work Detail ===== */
-.work-detail { display: none; padding-top: 40px; border-top: 1px solid var(--border-color); }
-.work-detail.is-active { display: block; animation: fadeIn 0.6s ease; }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-
-
-
-
-/* --- Slider Wrapper --- */
-.slider-wrapper {
-  background: var(--bg-light);
-  border-radius: 20px;
-  padding: 40px 20px;
-  margin: 32px 0;
-  width: 100%;
-  overflow: hidden;
 }
 
-.fix-nav {
-  display: flex;
-  gap: 10px;
+/* .portfolio-cards a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+} */
+
+.card-image img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.card-content { padding: 20px; background: #fff;}
+.card-content h4 { color: #333; margin-bottom: 8px; }
+.card-content p { font-size: 0.85rem; color: #777;text-align-last: left; }
+
+/* 右カラム全体のコンテナ */
+.work-info {
+  padding: 20px 0;
+}
+
+/* タイトル：少し太めで、アクセントカラーの下線を入れるとかっこいいです */
+.work-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
   margin-bottom: 30px;
-  overflow-x: auto;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+/* 仕様リストのスタイル */
+.work-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align-last: left;
+}
+
+.spec-item {
+  display: flex;
+  border-bottom: 1px solid #eee;
   padding-bottom: 10px;
 }
-.fix-nav button {
-  flex: 0 0 auto;
-  padding: 8px 20px;
-  border: 1px solid var(--border-color);
-  background: var(--white);
-  border-radius: 99px;
-  cursor: pointer;
-  transition: var(--transition);
-  font-size: 14px;
-}
-.fix-nav button.is-active { background: var(--primary-color); color: white; border-color: var(--primary-color); }
 
-.fix-window { width: 100%; overflow: hidden; }
-.fix-track { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-
-.fix-slide {
-  flex: 0 0 100%;
-  width: 100%;
-  padding: 0 10px;
-}
-
-.slide-content {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 40px;
-  align-items: start;
-}
-
-
-
-
-
-@media (max-width: 850px) { .slide-content { grid-template-columns: 1fr; justify-items: center; } }
-
-/* --- Compare Tool (Device Mockup) --- */
-.compare-container {
-  position: relative;
-  width: 100%;
-  max-width: 300px;
-  aspect-ratio: 9 / 18;
-  margin: 0 auto;
-  border-radius: 24px;
-  overflow-y: auto;   /* 枠内スクロール */
-  overflow-x: hidden;
-  background: #f0f0f0;
-  border: 8px solid #505050; /* スマホベゼル */
-  box-shadow: 3px 4px 13px 2px rgba(81, 81, 81, 0.35);
-  cursor: pointer;
-  -webkit-overflow-scrolling: touch;
-}
-/* スクロールバー非表示 */
-.compare-container::-webkit-scrollbar { display: none; }
-
-.compare-img-wrapper { position: relative; width: 100%; }
-.compare-img { width: 100%; height: auto; display: block; }
-
-.compare-after {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: auto;
-  z-index: 10;
-  clip-path: inset(0 0 0 100%);
-  transition: clip-path 0.4s ease-in-out;
-}
-.compare-container[data-state="after"] .compare-after { clip-path: inset(0 0 0 0); }
-
-.label-tag {
-  position: absolute;
-  top: 12px; left: 12px;
-  padding: 4px 10px;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  font-size: 11px;
+.spec-item dt {
+  width: 100px;
   font-weight: bold;
+  color: var(--primary-color);
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+
+.spec-item dd {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+}
+
+/* 使用ツールのタグデザイン */
+.spec-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.spec-tags span {
+  background: #f0f7f8;
+  color: #5a9ca0;
+  padding: 2px 10px;
   border-radius: 4px;
-  z-index: 20;
-  pointer-events: none;
+  font-size: 0.8rem;
+  border: 1px solid #d1eaea;
 }
 
-.hint-bar {
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-  background: rgba(62, 169, 181, 0.95);
-  color: white;
-  text-align: center;
-  font-size: 11px;
-  padding: 8px;
-  z-index: 30;
+/* リンクボタンの余白 */
+.work-link-area {
+  margin-top: 40px;
 }
 
-/* --- UI Components --- */
-.point-card { background: white; padding: 24px; border-radius: 12px; border: 1px solid var(--border-color);margin-bottom: 20px; }
-.point-card ul { padding-left: 20px; margin: 0; }
-.point-card li { margin-bottom: 8px; font-size: 14px; }
-.point-card p{margin-bottom: 20px;}
+/* ==========================================================================
+   11. Footer (修正版)
+   ========================================================================== */
+   footer {
+    background-image: linear-gradient(0deg, #76b5bd, #dff6f6fa);
+    padding: 20px 0 40px; /* 上に少し余裕を持たせる */
+    text-align: center;
+    margin-top: 80px;
+  }
+  
+  .email-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* 左右の中央揃え */
+    justify-content: center; /* 念のため上下の中央揃え */
+    gap: 15px;
+    margin: 0 auto 30px;    /* 左右マージンautoでコンテナ自体を中央に */
+    width: fit-content;     /* 中身の幅に合わせる */
+  }
+  
+  .button-gif {
+    width: 80px;
+    height: auto;
+    mix-blend-mode: multiply;
+    transition: transform 0.3s ease;
+    display: block;         /* ブロック要素にして中央配置を確実に */
+    margin: 0 auto 20px;         /* 念のための左右中央 */
+  }
+  
+  .email-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    color: var(--primary-color);
+    padding: 16px 40px;
+    border-radius: 100px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    text-decoration: none;
+  }
+  
+  /* ★連動ホバー：email-containerにマウスが乗った時 */
+  .email-container:hover .button-gif {
+    animation: bounce 0.5s infinite alternate;
+  }
+  
+  .email-container:hover .email-button {
+    background-color: #f9f9f9;
+    transform: translateY(-3px); /* 少し上に浮く */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  footer p {
+    color: #fff;
+    font-size: 0.75rem;
+    margin-top: 20px;
+  }
+  
+  /* 跳ねるアニメーション */
+  @keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+  }
 
-.color_1{border: 2px solid #e8aed8;;} 
-.color_2{border: 2px solid #dc8888;;} 
-.color_3{border: 2px solid #e4d366;;} 
-.color_4{border: 2px solid #8acb76;;} 
-.color_5{border: 2px solid #60c6ce;;} 
-.color_6{border: 2px solid #9d84b9;;} 
+/* ==========================================================================
+   8. Animations & Media Queries
+   ========================================================================== */
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
-.result-box { background: #e6f4f6; padding: 20px; border-radius: 12px; margin-bottom: 30px; border-left: 4px solid var(--primary-color); }
+@media (max-width: 600px) {
+  .skill-item { flex-direction: column; }
+  .skill-category { width: 100%; min-height: 120px; }
+  .title { font-size: 28px; top: 180px; }
+  .main { padding: 15px; }
+  .none{display: none;}
+}
 
-/* --- Case 02: Site Intro --- */
-.site-intro { display: grid; grid-template-columns: 300px 1fr; gap: 40px; margin-top: 30px; }
-@media (max-width: 768px) { .site-intro { grid-template-columns: 1fr; } }
-.desc-list dt { font-weight: bold; color: var(--primary-color); margin-top: 20px; }
-.desc-list dd { margin: 4px 0 12px 0; font-size: 15px; }
+
+@media (max-width: 400px) {
+  .wave {
+    width: 1050px; 
+    height: 1050px;       /* 画面よりはるかに大きなサイズで円（回転体）を作る */
+  }
+
+  h3{margin: 50px 0 30px;}
+
+  header img.header-kuma {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 160px;
+    height: auto;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.top_text p{font-size: 12px;}
+.skill-description{padding: 40px 20px;}
+
+.skill-description {font-size: 12px;}
+}
+
+
+
+
+

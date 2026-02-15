@@ -3,221 +3,253 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Design Portfolio</title>
-
+  <title>Design Portfolio | chiharu aita</title>
+  
   <link rel="stylesheet" href="css/style.css">
-
+  <link rel="stylesheet" href="css/lightbox.css">
+  <link rel="icon" href="img/favicon.png">
 </head>
 <body>
-
-<header>
-  <h1>ユーザー視点で考える<br>課題解決を軸にしたデザイン</h1>
-  <p>進学情報サイトにてWebデザイナーとして3年間従事。ユーザー体験を軸とし、CV率向上を意識したUIデザインを行ってきました。</p>
-  <a href="#works" class="cta">Case Studyを見る</a>
-</header>
-
-<section id="works">
-  <h2>Works</h2>
-  <div class="portfolio-cards">
-    <a class="card" onclick="openDetail('ux')">
-      <div class="card-image"><img src="img/mock-up1.png" alt="UX改善"></div>
-      <div class="card-content">
-        <h3>UI/UX改善を目的としたデザイン改修</h3>
-        <p>導線と情報構造を見直し、迷わず行動できる体験を目指した事例</p>
-      </div>
-    </a>
-    <a class="card" onclick="openDetail('content')">
-      <div class="card-image"><img src="img/mock-up2.png" alt="コンテンツ制作"></div>
-      <div class="card-content">
-        <h3>コンテンツの作成</h3>
-        <p>情報収集、ライティングからデザインまでを一貫して手がけた事例</p>
-      </div>
-    </a>
-  </div>
-</section>
-
-<section id="detail-container">
-
-  <div class="work-detail" id="ux">
-    <h2>UX改善を目的としたデザイン改修</h2>
-    <div class="result-box">
-      <strong>改善結果：</strong> ページ滞在時間向上、スクロール量増加、および学校詳細へのクリック率改善を確認。
+  <header id="top">
+    <div class="wave-box">
+      <div class="wave -one"></div>
+      <div class="wave -two"></div>
+      <div class="wave -three"></div>
+      <h1 class="title">PORTFOLIO<span><br>chiharu aita</span></h1>
     </div>
+    <img src="img/kuma.png" alt="クマのキャラクター" class="header-kuma">
+  </header>
 
-    <div class="slider-wrapper">
-      <div class="fix-nav">
-        <button class="is-active" onclick="goTo(0)">TOPページ</button>
-        <button onclick="goTo(1)">個別ページ</button>
+  <p id="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span>MENU</span>
+  </p>
+
+  <nav>
+    <ul class="container">
+      <li><a href="#top">Top</a></li>
+      <li><a href="#profire">Profire</a></li>
+      <li><a href="#skills">Skills & Experience</a></li>
+      <li><a href="#personal">Personal Project</a></li>
+      <li><a href="#works">Works</a></li>
+    </ul>
+  </nav>
+
+  <a href="#" id="page-top" class="top-btn"></a>
+
+  <div class="main">
+    <div class="border"></div>
+
+    <section id="profire" class="fadein">
+      <div class="top_text">
+        <h2>課題解決を軸にデザインする</h2>
+        <p>
+          ご覧くださりありがとうございます。<br>
+          元保育士のWebデザイナー、会田千春です。<br><br>
+          保育現場で私が一貫して磨き続けてきたもの。<br>
+          それは、言葉になる前の小さな変化や要求を捉える気付きの視点です。<br><br>
+          独りよがりの表現ではなく、背景を想い、寄り添い、考え抜く。<br>
+          保育士として培った、深い観察眼と共感力を設計の土台に据え、<br>
+          課題解決へと繋がるデザインを提供いたします。
+        </p>
+        <!-- <a href="#works" class="cta">Case Studyを見る</a> -->
       </div>
+    </section>
 
-      <div class="fix-window">
-        <div class="fix-track">
-          
-          <div class="fix-slide">
-            <div class="slide-content">
-              <div class="compare-container" data-state="before" onclick="toggleCompare(this)">
-                <span class="label-tag">Before</span>
-                <div class="compare-img-wrapper">
-                  <img src="img/img12.jpg" class="compare-img">
-                  <img src="img/img13.jpg" class="compare-img compare-after">
-                </div>
-                <div class="hint-bar">タップで比較 / スクロールで全体確認</div>
-              </div>
-              <div>
-                <div class="point-card color_1">
-                  <h4>改善箇所１：リンクデザイン</h4>
-                  <ul>
-                    <li>情報の優先度が整理されておらず、どこから見ればよいか分かりにくい</li>
-                    <li>カード全体がリンクであることが直感的に伝わりづらい</li>
-                    <li>色数が多く、視線が分散する</li>
-                    <li>詳しく見たいとユーザーに思わせるほどのとっかかり要素がない</li>
-                  </ul>
-                  <h4 style="margin-top:20px;">改善のポイント</h4>
-                  <ul>
-                    <li>一覧画面での比較を前提とし、Z型の視線導線を意識して右下にCTAを配置</li>
-                    <li>主張が強すぎた分野名は写真の近くに配置し、枠で囲うことで視認性を担保</li>
-                    <li>カード型UIを採用し、構造を明確化。背景色によるグルーピングでコントラストを強め、視認性を改善</li>
-                    <li>学校の魅力を2〜3行で要約し、「…」で詳細ページへの遷移を促進</li>
-                  </ul>
-                </div>
-                <div class="point-card color_2">
-                  <h4>施策：段階的CV（資料請求）の追加</h4>
-                  <p>いきなり「イベント参加」を促すのは心理的ハードルが高いため、検討初期層向けに「パンフレット請求」という中間のゴールを設置</p>
-                  <ul>
-                    <li>離脱ユーザーをリードとして拾い上げる役割</li>
-                    <li>次年度以降の志願者確保に向けた接点作り</li>
-                  </ul>
-                </div>
-              </div>
-
-            </div>
+    <section id="skills" class="fadein">
+      <div class="portfolio-skills">
+        <h3>Skills & Experience</h3>
+        <dl class="skill-list">
+          <div class="skill-item">
+            <dt class="skill-category design">
+              <div class="category-bg-image"></div>
+              <span>デザイン・制作</span>
+            </dt>
+            <dd class="skill-description">
+              <ul>
+                <li>
+                  <strong>マルチクリエイティブ制作</strong>
+                  <span>
+                    LP作成（HTML・SPIRAL活用）に加え、バナーやSNS画像の作成、メルマガの作成・配信まで担当。
+                    コンテンツライティングも含め、視覚と文章の両面から訴求力の高い制作を実現します。
+                  </span>
+                </li>
+                <li>
+                  <strong>テクニカル運用・DB連携</strong>
+                  <span>
+                    単なる制作に留まらず、SPIRAL等のシステムを用いたデータベース連動型のユーザーページ構築、
+                    フォーム調整、リスト管理など、システムの仕様を理解した運用実務が可能です。
+                  </span>
+                </li>
+                <li class="tool-list">
+                  <strong>使用可能ツール</strong>
+                  <div class="tool-tags">
+                    <span>HTML</span><span>CSS</span><span>jQuery</span><span>JavaScript</span>
+                    <span>Illustrator</span><span>Photoshop</span><span>XD</span><span>Figma</span>
+                    <span class="highlight-tool">SPIRAL</span><span>WordPress</span>
+                    <span class="office-tool">Office(Excel,Word,PPT)</span>
+                  </div>
+                </li>
+              </ul>
+            </dd>
           </div>
 
-          <div class="fix-slide">
-            <div class="slide-content">
-              <div class="compare-container" data-state="before" onclick="toggleCompare(this)">
-                <span class="label-tag">Before</span>
-                <div class="compare-img-wrapper">
-                  <img src="img/img14.png" class="compare-img">
-                  <img src="img/img15.png" class="compare-img compare-after">
-                </div>
-                <div class="hint-bar">タップで比較 / スクロールで全体確認</div>
-              </div>
-              <div>
-                <div class="point-card color_3">
-                  <h4>改善箇所１：ファーストビュー</h4>
-                  <ul>
-                    <li>ポイント部分が簡易的で学校の魅力を伝えるには弱く、クライアントの要望に応えにくい。また、スライド式のメイン画像はTOPに置くほどの訴求力が不足している。</li>
-                  </ul>
-                  <h4 style="margin-top:20px;">改善のポイント</h4>
-                  <ul>
-                    <li><strong>【ファーストビューの最適化】</strong> ユーザーが最も求めている「日程確認」と「申し込み」への導線を優先し、情報の取捨選択を行う。</li>
-                    <li><strong>【日程選択のUI改善】</strong> フィッツの法則に基づき、クリック可能な領域（ヒットエリア）をボタン化して拡大。詳細ページを挟まず直接フォームへ遷移させることで、ユーザーの工数を減らしCV率向上を図る。</li>
-                    <li><strong>【特色の形骸化を回避】</strong> 差別化しにくい「ポイント」枠をあえて廃止。下部に自由度の高いコンテンツエリアを設けることで、学校ごとの強みを柔軟に訴求できるレイアウトに変更。</li>
-                  </ul>
-                </div>
-              
-                
-              
-                <div class="point-card color_4">
-                  <h4>改善箇所２：イベント内容</h4>
-                  <ul>
-                    <li>各要素（画像・説明・ボタン）がバラバラに配置されており、一つのイベントとしての情報のまとまりに欠ける。</li>
-                  </ul>
-                  <h4 style="margin-top:20px;">改善のポイント</h4>
-                  <ul>
-                    <li><strong>【イベント内容のカード化】</strong> ゲシュタルト要因（近接の要因）を応用し、画像、タイトル、日程、ボタンを一つの「カード」として枠で囲むことで、関連情報であることを直感的に認識できるよう改善。</li>
-                    <li><strong>【ラベル（タグ）による認知負荷の低減】</strong> 「参加型」「要予約」「対象学科」などを色分けされたバッジ（タグ）で表現。直感的にイベントの属性を理解できるよう配慮。</li>
-                    <li><strong>【情報の集約】</strong> ユーザーが興味を持った瞬間にアクションを起こせるよう、カード内で日程確認から申し込みまで完結できる設計に改善。/li>
-                  </ul>
-                </div>
-              
-                
-              
-                <div class="point-card color_5">
-                  <h4>改善箇所３：全体設計とアクセシビリティ</h4>
-                  <ul>
-                    <li>濃い青のヘッダーバーが目立ちすぎてコンテンツを阻害している。また、アクセス情報がテキストのみで、直感的な判読性が低い。</li>
-                  </ul>
-                  <h4 style="margin-top:20px;">改善のポイント</h4>
-                  <ul>
-                    <li><strong>【色彩/余白の調整】</strong>全体的に余白や色彩を調整。</li>
-                    <li><strong>【アクセス情報のアイコン化】</strong> スキャナビリティ（可読性）向上のため、「場所」「駅」「問い合わせ」に視覚的な補助（アイコン）を追加し、情報の区別を容易にした。</li>
-                    <li><strong>【配色とCTAの強化】</strong> 申し込みボタンに強い「赤」を使用し、形状を角丸にすることで、親しみやすさと押しやすさ（アフォーダンス）を高め、「どこを押せばいいか」を明確にした。</li>
-                  </ul>
-                </div>
-
-            </div>
+          <div class="skill-item">
+            <dt class="skill-category management">
+              <div class="category-bg-image"></div>
+              <span>ディレクション<br>進行管理</span>
+            </dt>
+            <dd class="skill-description">
+              <ul>
+                <li><strong>ステークホルダー&#40;関係者&#41;管理</strong>
+                  <span>特集企画にて約40校の専門学校担当者と直接折衝を行い、校正・進捗管理を徹底。スケジュール通りにプロジェクトを完遂させました。また、ユーザーページ構築に関するテクニカルな問い合わせ対応も担当。</span>
+                  </li>
+                <li><strong>社内連携・ブリッジ業務</strong>
+                  <span>営業現場のフィードバックを制作チームへ還元。エンジニアとの技術要件の調整を行い、制作の円滑な進行と品質向上に貢献しました。</span>
+                  </li>
+              </ul>
+            </dd>
           </div>
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <div class="work-detail" id="content">
-    <h2>サイト内コンテンツの作成</h2>
-    <div class="site-intro">
-      <div class="site-image">
-        <img src="img/design5.png" style="width:100%; border-radius:12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-      </div>
-      <div class="site-text">
-        <h3 style="margin-top:0;">語学・観光・ウェディング分野 特集ページ</h3>
-        <dl class="desc-list">
-          <dt>担当範囲</dt>
-          <dd>情報収集 / 構成設計 / ライティング / ページ制作</dd>
-
-          <dt>目的・導線設計</dt>
-          <dd>特定分野への関心喚起から、学校一覧ページへの回遊を最大化。職種ごとの具体的なキャリアイメージを持たせ、自然に比較検討へ誘導する設計。</dd>
-
-          <dt>UIデザイナーとしての工夫</dt>
-          <dd>職種情報をカードUIで整理。各分野のトーンに合わせたカラーコーディングとアイコンを採用し、読み物としての楽しさと情報の識別性を両立。</dd>
+          <div class="skill-item">
+            <dt class="skill-category operation">
+              <div class="category-bg-image"></div>
+              <span>サイト運営・解析</span>
+            </dt>
+            <dd class="skill-description">
+              <ul>
+                <li>
+                  <strong>大規模サイトの運用・進行管理</strong>
+                  <span>
+                    年間約300校の年度更新・データ精査を並行して担当。
+                    原稿準備、メールでの更新依頼、個別ページ作成などの煩雑な工程を正確に管理し、
+                    大規模サイトの安定した運用を支える事務・制作進行を得意とします。
+                  </span>
+                </li>
+                <li>
+                  <strong>数値解析・データに基づいた改善</strong>
+                  <span>
+                    Google Analyticsを用いたアクセス解析・CV管理を実施。
+                    担当した特集企画においては、定量的データに基づいた改修提案から実施までを行い、
+                    ユーザーの反応を見ながらコンテンツの質を高めるサイクルを回しました。
+                  </span>
+                </li>
+              </ul>
+            </dd>
+          </div>
         </dl>
       </div>
-    </div>
+    </section>
+
+    <section id="personal" class="fadein">
+      <h3>Personal Project</h3>
+      <div class="portfolio-cards">
+        <a href="hoiku/index.html">
+          <div class="card-image"><img src="img/mock-up5.jpg" alt="保育士向けイラストサイト"></div>
+          <div class="card-content">
+            <h4>保育士向けの塗り絵イラスト配布サイト</h4>
+            <p>
+              直感的に操作できるインターフェースを構築しました。
+              単なる素材提供に留まらず、ねらいや配慮をまとめた記事を併記することで、
+              保育の質を支えるプラットフォームを目指しています。
+            </p>
+          </div>
+        </a>
+        <div class="none"></div>
+      </div>
+
+    </section>
+
+    <section id="works" class="fadein">
+      <h3>Works</h3>
+      <div class="portfolio-cards">
+        <a href="oc/index.html">
+          <div class="card-image"><img src="img/mock-up3.png" alt="UX改善"></div>
+          <div class="card-content">
+            <h4>UI/UX改善を目的としたデザイン改修</h4>
+            <p>
+              ユーザーの導線と情報構造をゼロから見直し、迷わず目的へ到達できる体験を追求した設計事例です。<br><br>
+              ※守秘義務およびプライバシー保護のため、掲載にあたってバナーデザインや名称等の詳細は架空のものに差し替えておりますが、
+              情報設計やUIデザインのプロセスは実案件に基づいた内容を公開しています。
+            </p>
+          </div>
+        </a>
+        <a href="field/index.html">
+          <div class="card-image"><img src="img/mock-up4.png" alt="コンテンツ制作"></div>
+          <div class="card-content">
+            <h4>コンテンツの作成</h4>
+            <p>
+              人気低迷が懸念される分野に対し、高校生の心理的ハードルを下げるための「親しみやすさ」を最優先に設計しました。
+              SEOで間口を広げつつ、「この仕事、いいかも」と思えるきっかけをデザインとライティングの両面からアプローチ。
+            </p>
+          </div>
+        </a>
+      </div>
+    </section>
   </div>
-</section>
 
-<footer style="text-align:center; padding: 60px; color: #999; font-size: 14px; border-top: 1px solid #eee;">
-  &copy; 2026 Your Name | UI Designer Portfolio
-</footer>
+  <footer>
+    <div class="email-container">
+      <!-- <div class="hover">
+        <img src="img/mail.png" alt="" class="button-gif">
+        <a href="#" class="gmail-button">お問い合わせはこちら</a>
+      </div> -->
 
-<script>
-  // 表示の切り替え
-  function openDetail(id) {
-    document.querySelectorAll('.work-detail').forEach(el => el.classList.remove('is-active'));
-    const target = document.getElementById(id);
-    target.classList.add('is-active');
-    target.scrollIntoView({ behavior: 'smooth' });
-  }
+    </div>
+    <p>2026 | aita chiharu portfolio</p>
+  </footer>
 
-  // スライダー制御
-  const track = document.querySelector('.fix-track');
-  const navButtons = document.querySelectorAll('.fix-nav button');
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/lightbox.min.js"></script>
 
-  function goTo(index) {
-    track.style.transform = `translateX(-${index * 100}%)`;
-    navButtons.forEach(btn => btn.classList.remove('is-active'));
-    navButtons[index].classList.add('is-active');
-  }
+ <script>
+  $(function(){
+  // 1. & 2. Lightbox と ハンバーガー（変更なし）
+  lightbox.option({ 'fadeDuration': 200, 'wrapAround': true });
+  $('#burger').on('click', function(){
+    $(this).toggleClass('active');
+    $('nav').fadeToggle();
+  });
+  $('nav a').on('click', function(){
+    $('#burger').removeClass('active');
+    $('nav').fadeOut();
+  });
 
-  // Before/After比較ツール
-  function toggleCompare(el) {
-    const state = el.getAttribute('data-state');
-    const newState = state === 'before' ? 'after' : 'before';
-    el.setAttribute('data-state', newState);
-    
-    const label = el.querySelector('.label-tag');
-    label.textContent = newState === 'after' ? 'After' : 'Before';
+  // 3. スクロールでトップへ戻るボタン（表示切り替えのみ残す）
+  const topBtn = $('#page-top');
+  $(window).on('scroll', function () {
+    if ($(this).scrollTop() > 400) {
+      topBtn.addClass('is-show');
+    } else {
+      topBtn.removeClass('is-show');
+    }
+  });
 
-    const bar = el.querySelector('.hint-bar');
-    bar.textContent = newState === 'before' ? 'タップでAfterを表示 / スクロール可' : 'タップでBeforeを表示 / スクロール可';
-    
-    // 切り替え時に一番上に戻す
-    el.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-</script>
+  // 4. 【改善】ふわっと表示（Intersection Observer版）
+  // スクロールイベントの中ではなく、外に出すことで動作を軽くします。
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        $(entry.target).addClass('scrollin');
+        observer.unobserve(entry.target); // 一度表示されたら監視を終了（負荷軽減）
+      }
+    });
+  }, {
+    rootMargin: '0px 0px -150px 0px' // 150px手前で発火させる設定
+  });
 
+  $('.fadein').each(function() {
+    observer.observe(this);
+  });
+
+  // 5. スムーズスクロール
+  topBtn.on('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop: 0}, 500);
+  });
+});
+ </script>
 </body>
 </html>

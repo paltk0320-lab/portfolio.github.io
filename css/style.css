@@ -515,7 +515,7 @@ h3::before {
 
   header img.header-kuma {
     position: absolute;
-    right: 0px;
+    right: -10px;
     bottom: 0px;
     width: 160px;
     height: auto;

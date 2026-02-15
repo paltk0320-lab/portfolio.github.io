@@ -125,3 +125,10 @@ header img {
 .fade-in:nth-child(5) { transition-delay: 0.4s; }
 
 
+@media (max-width: 500px) {
+    header{margin: 30px auto 60px;}
+
+    .nav-btn {
+        padding: 12px 12px;
+    }
+}

@@ -42,7 +42,7 @@
    ========================================================================== */
 .portfolio-container {
     max-width: 1000px;
-    margin: 0 auto 120px; /* 下部固定ボタン用の余白 */
+    margin: 40px auto 120px; /* 下部固定ボタン用の余白 */
     padding: clamp(30px, 8vw, 60px); /* 画面幅に合わせて可変 */
     background: var(--white);
     border-radius: 20px;

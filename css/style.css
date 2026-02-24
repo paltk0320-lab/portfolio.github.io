@@ -17,15 +17,15 @@ p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 
 body {
   color: var(--text-main);
-  background-color: var(--white);
+  
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   font-family: 'Quicksand', 'Noto Sans JP', sans-serif;
   letter-spacing: 0.08em; 
   line-height: 1.8;
   font-size: 14px;
-}
 
+}
 
 /* ==========================================================================
    2. Variables
@@ -219,7 +219,6 @@ nav a:hover {
     height: 100vh;        /* 画面いっぱいの高さに設定 */
     position: relative;   /* 中の波（.wave）を配置する基準点 */
     overflow: hidden;     /* 枠からはみ出した大きな円を見えないように隠す */
-    background: #fdfdfd;  /* 背景のベースカラー */
     margin-bottom: 30px;
   }
   
@@ -283,11 +282,13 @@ h3::before {
 
 .skill-list { display: flex; flex-direction: column; gap: 20px; }
 .skill-item {
+  border: 1px solid #c7c7c7;
+
   display: flex;
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  
 }
 
 .skill-category {
@@ -335,13 +336,45 @@ h3::before {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
+  
 }
 
 .portfolio-cards a {
+  display: block;
+  text-decoration: none;
+  background-color: #fff;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid var(--border-color);
-  transition: var(--transition);
+  /* 指定のボーダーを維持 */
+  border: 1px solid #c7c7c7;
+  /* 影は「重さ」を感じさせる多層レイヤー（初期は薄く） */
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 4px 10px rgba(0, 0, 0, 0.04);
+  /* 動きをわざと「ゆっくり」にする（0.4s〜0.5s） */
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.2, 0, 0.2, 1),
+              border-color 0.4s ease;
+}
+
+/* マウスホバー：あえて「やりすぎない」のが今の正解 */
+.portfolio-cards a:hover {
+  /* 上に2pxだけ。動いたかどうかの境界線 */
+  transform: translateY(-2px); 
+  
+  /* ボーダーを少しだけ濃く、またはメイン色に寄せる（ここでは少し暗く） */
+  border-color: #a0a0a0; 
+  
+  /* 影を「濃く」するのではなく「遠くに」飛ばす */
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.1); 
+}
+
+/* クリックした瞬間に少しだけ沈む（手触り感） */
+.portfolio-cards a:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.1s;
 }
 
 /* .portfolio-cards a:hover {
@@ -493,6 +526,47 @@ h3::before {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+
+/* --- 背景装飾：ここから --- */
+@keyframes tilt-move {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(10deg); }
+  75%  { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.bg-item {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-image: url('../img/back.png'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 0; 
+  pointer-events: none;
+  animation: tilt-move 2.5s ease-in-out infinite;
+}
+
+/* 6個に増やし、1番目を右(right)からスタートに変更 */
+/* 数値を少し小さくして、フッター内に収まるように調整 */
+.item-1 { top: 200px;  right: -30px; }
+.item-2 { top: 750px;  left: -30px;  animation-delay: -0.4s; }
+.item-3 { top: 1300px; right: -25px; animation-delay: -0.8s; }
+.item-4 { top: 1850px; left: -25px;  animation-delay: -1.2s; }
+.item-5 { top: 2400px; right: -20px; animation-delay: -1.6s; }
+.item-6 { top: 2900px; left: -20px;  animation-delay: -2.0s; } 
+/* 重ね順調整 */
+.back-img{ position: relative !important; }
+#profire, #skills, #personal, #works {
+  position: relative;
+  z-index: 1;
+}
+/* --- 背景装飾：ここまで --- */
+
+
+
 
 @media (max-width: 600px) {
   .skill-item { flex-direction: column; }

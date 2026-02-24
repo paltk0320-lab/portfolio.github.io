@@ -150,35 +150,6 @@ h3 {
     height: auto;
 }
 
-/* ==========================================================================
-   5. Animations (アニメーション)
-   ========================================================================== */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-section, 
-.main-visual, 
-.feature-item, 
-.concept-box, 
-.card {
-    opacity: 0;
-    animation: fadeInUp 1.0s ease-out forwards;
-}
-
-/* Animation Delays */
-.concept-box      { animation-delay: 0.2s; }
-.overview-section { animation-delay: 0.4s; }
-.grid             { animation-delay: 0.6s; }
-.main-visual      { animation-delay: 0.8s; }
-
 
 
 /* ==========================================================================

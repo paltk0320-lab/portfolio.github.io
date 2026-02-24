@@ -329,7 +329,7 @@ h3::before {
   color: #555;
 }
 
-.top_text p{text-align: center;}
+.top_text{text-align: center;}
 
 .portfolio-cards {
   display: grid;

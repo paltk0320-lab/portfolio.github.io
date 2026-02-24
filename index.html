@@ -230,20 +230,20 @@
   });
 
 
-  // const observer = new IntersectionObserver((entries) => {
-  //   entries.forEach(entry => {
-  //     if (entry.isIntersecting) {
-  //       $(entry.target).addClass('scrollin');
-  //       observer.unobserve(entry.target); 
-  //     }
-  //   });
-  // }, {
-  //   rootMargin: '0px 0px -150px 0px' 
-  // });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        $(entry.target).addClass('scrollin');
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, {
+    rootMargin: '0px 0px -150px 0px' 
+  });
 
-  // $('.fadein').each(function() {
-  //   observer.observe(this);
-  // });
+  $('.fadein').each(function() {
+    observer.observe(this);
+  });
 
   // 5. スムーズスクロール
   topBtn.on('click', function(e) {

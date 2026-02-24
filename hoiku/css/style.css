@@ -184,12 +184,4 @@ h3 {
         margin: 40px auto 60px;
     }
 
-    .page-nav-buttons {
-        padding: 15px 10px;
-    }
-
-    .nav-btn {
-        flex: 1; /* ボタンを均等幅に */
-        padding: 12px 10px;
-    }
 }

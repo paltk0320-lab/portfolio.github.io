@@ -49,11 +49,10 @@ section { padding: 15px; }
 .main { padding: 24px; max-width: 1000px; margin: 0 auto; }
 
 /* フェードイン演出 */
-.fadein {
+/* .fadein {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-  /* チラつき防止 */
   backface-visibility: hidden;
   will-change: opacity, transform;
 }
@@ -62,7 +61,7 @@ section { padding: 15px; }
   opacity: 1;
   transform: translateY(0);
   text-align: center;
-}
+} */
 
 .border {
   display: block;
@@ -262,7 +261,6 @@ nav a:hover {
   text-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.title span { font-size: 18px; }
 h2{margin-bottom: 30px;}
 /* ==========================================================================
    6. Skills & Cards
@@ -331,7 +329,7 @@ h3::before {
   color: #555;
 }
 
-
+.top_text p{text-align: center;}
 
 .portfolio-cards {
   display: grid;

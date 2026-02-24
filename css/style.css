@@ -24,7 +24,7 @@ body {
   letter-spacing: 0.08em; 
   line-height: 1.8;
   font-size: 14px;
-
+  overflow-x: hidden;
 }
 
 /* ==========================================================================
@@ -90,7 +90,7 @@ section { padding: 15px; }
 /* ==========================================================================
    4. Header & Navigation
    ========================================================================== */
-header { position: relative; }
+header { position: relative; overflow: hidden;}
 
 header img.header-kuma {
   position: absolute;
@@ -460,7 +460,6 @@ h3::before {
     background-image: linear-gradient(0deg, #76b5bd, #dff6f6fa);
     padding: 20px 0 40px; /* 上に少し余裕を持たせる */
     text-align: center;
-    margin-top: 80px;
   }
   
   .email-container {
@@ -557,8 +556,10 @@ h3::before {
 .item-4 { top: 1850px; left: -25px;  animation-delay: -1.2s; }
 .item-5 { top: 2400px; right: -20px; animation-delay: -1.6s; }
 .item-6 { top: 2900px; left: -20px;  animation-delay: -2.0s; } 
+.item-7 { top: 3200px; right: -20px; animation-delay: -2.4s; }
+.item-8 { top: 3500px; left: -20px;  animation-delay: -2.8s; } 
 /* 重ね順調整 */
-.back-img{ position: relative !important; }
+.back-img{ position: relative !important;overflow: hidden;padding-bottom: 80px; }
 #profire, #skills, #personal, #works {
   position: relative;
   z-index: 1;
@@ -577,11 +578,13 @@ h3::before {
 }
 
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .wave {
     width: 1050px; 
     height: 1050px;       /* 画面よりはるかに大きなサイズで円（回転体）を作る */
   }
+
+  .top_text{text-align-last: left;}
 
   h3{margin: 50px 0 30px;}
 
@@ -593,6 +596,18 @@ h3::before {
 .skill-description{padding: 40px 20px;}
 
 .skill-description {font-size: 12px;}
+.item-1 { top: 0px;}
+.item-2 { top: 350px;}
+.item-3 { top: 1350px;}
+.item-4 { top: 1900px;}
+.item-5 { top: 2600px;}
+.item-6 { top: 3100px;} 
+.item-7 { top: 3500px;}
+.item-8 { top: 4200px;} 
+.bg-item {
+  width: 120px;
+  height: 120px;
+}
 }
 
 

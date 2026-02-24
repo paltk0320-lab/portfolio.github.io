@@ -95,7 +95,7 @@ header { position: relative; overflow: hidden;}
 header img.header-kuma {
   position: absolute;
   right: 10px;
-  bottom: 20px;
+  bottom: 80px;
   width: 180px;
   height: auto;
   z-index: 10;

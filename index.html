@@ -229,22 +229,21 @@
     }
   });
 
-  // 4. 【改善】ふわっと表示（Intersection Observer版）
-  // スクロールイベントの中ではなく、外に出すことで動作を軽くします。
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        $(entry.target).addClass('scrollin');
-        observer.unobserve(entry.target); // 一度表示されたら監視を終了（負荷軽減）
-      }
-    });
-  }, {
-    rootMargin: '0px 0px -150px 0px' // 150px手前で発火させる設定
-  });
 
-  $('.fadein').each(function() {
-    observer.observe(this);
-  });
+  // const observer = new IntersectionObserver((entries) => {
+  //   entries.forEach(entry => {
+  //     if (entry.isIntersecting) {
+  //       $(entry.target).addClass('scrollin');
+  //       observer.unobserve(entry.target); 
+  //     }
+  //   });
+  // }, {
+  //   rootMargin: '0px 0px -150px 0px' 
+  // });
+
+  // $('.fadein').each(function() {
+  //   observer.observe(this);
+  // });
 
   // 5. スムーズスクロール
   topBtn.on('click', function(e) {

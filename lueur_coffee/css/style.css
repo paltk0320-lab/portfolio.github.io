@@ -297,6 +297,7 @@
         }
         @media (max-width: 768px) {
             .hero, .concept-grid, .access-container { flex-direction: column-reverse; text-align: center; }
+            .concept-grid{display: block;}
             .hero-img { width: 100%; height: 40vh; }
             .gallery { grid-template-columns: repeat(2, 1fr); }
             .dessert-header h2 { font-size: 3rem; }
@@ -304,4 +305,5 @@
 
             .access-container { display: block;}
             .map-mock {min-height: auto; margin-top: 60px;}
+            .hero{margin-top: 80px;}
         }

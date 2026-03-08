@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -7,7 +8,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="aita chiharuのポートフォリオ">
   <meta property="og:description" content="aita chiharuのポートフォリオです。">
-  <meta property="og:site_name" content="フクイジュリのポートフォリオ">
+  <meta property="og:site_name" content="aita chiharuのポートフォリオ">
   <meta property="og:image" content="https://paltk0320-lab.github.io/portfolio.github.io/img/favicon.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="aita chiharuのポートフォリオ">
@@ -22,16 +23,28 @@
 </head>
 
 <body>
-  <header id="top">
-    <div class="wave-box">
-      <div class="wave -one"></div>
-      <div class="wave -two"></div>
-      <div class="wave -three"></div>
-      <h1 class="title">PORTFOLIO<span><br>chiharu aita</span></h1>
-    </div>
-    <img src="img/kuma.png" alt="クマのキャラクター" class="header-kuma">
-  </header>
+  <header class="hero">
 
+    <div class="hero-content">
+        <span class="hero-tagline">Portfolio</span>
+        <h1 class="hero-title">Solve by Design</h1>
+        
+        <p class="sub-text">
+            ご覧くださりありがとうございます。<br>
+            会田千春と申します。<br><br>
+
+            複雑な課題をシンプルに整理し、機能的で心地よい体験へと落とし込む。そんな「解決のためのデザイン」を追求しています。
+        </p>
+
+        <div class="scroll-guide-region">
+            <div class="gif-container">
+                <img src="img/kuma.png" alt="Scroll Guide">
+            </div>
+
+
+        </div>
+    </div>
+</header>
   <p id="burger">
     <span></span>
     <span></span>
@@ -42,46 +55,23 @@
   <nav>
     <ul class="container">
       <li><a href="#top">Top</a></li>
-      <li><a href="#profire">Profire</a></li>
       <li><a href="#skills">Skills & Experience</a></li>
       <li><a href="#personal">Personal Project</a></li>
       <li><a href="#works">Works</a></li>
+      <!-- <li><a href="#another">Another</a></li> -->
     </ul>
   </nav>
 
   <a href="#" id="page-top" class="top-btn"></a>
 
-  <div class="back-img">
-    <div class="bg-item item-1"></div>
-    <div class="bg-item item-2"></div>
-    <div class="bg-item item-3"></div>
-    <div class="bg-item item-4"></div>
-    <div class="bg-item item-5"></div>
-    <div class="bg-item item-6"></div>
-    <div class="bg-item item-7"></div>
-    <div class="bg-item item-8"></div>
 
     <div class="main">
 
-      <section id="profire">
-        <div class="top_text">
-          <h2>課題解決を軸にデザインする</h2>
-          <p>
-            ご覧くださりありがとうございます。<br>
-            元保育士のWebデザイナー、会田千春です。<br><br>
-            保育現場で私が一貫して磨き続けてきたもの。<br>
-            それは、言葉になる前の小さな変化や要求を捉える気付きの視点です。<br><br>
-            独りよがりの表現ではなく、背景を想い、寄り添い、考え抜く。<br>
-            保育士として培った、深い観察眼と共感力を設計の土台に据え、<br>
-            課題解決へと繋がるデザインを提供いたします。
-          </p>
-          <!-- <a href="#works" class="cta">Case Studyを見る</a> -->
-        </div>
-      </section>
+
   
       <section id="skills">
         <div class="portfolio-skills">
-          <h3>Skills & Experience</h3>
+          <h2>Skills & Experience</h2>
           <dl class="skill-list">
             <div class="skill-item">
               <dt class="skill-category design">
@@ -166,31 +156,43 @@
       </section>
   
       <section id="personal">
-        <h3>Personal Project</h3>
+        <h2>Personal Project</h2>
+        
         <div class="portfolio-cards">
-          <a href="hoiku/index.html">
-            <div class="card-image"><img src="img/mock-up5.jpg" alt="保育士向けイラストサイト"></div>
+          <a href="cafe/index.html">
+            <div class="card-image"><img src="img/cafe.png" alt="保育士向けイラストサイト"></div>
             <div class="card-content">
-              <h4>保育士向けの塗り絵イラスト配布サイト</h4>
+              <h3>Lueur Cofferのホームページ</h3>
               <p>
-                直感的に操作できるインターフェースを構築しました。
-                単なる素材提供に留まらず、ねらいや配慮をまとめた記事を併記することで、
-                保育の質を支えるプラットフォームを目指しています。
+                架空のカフェ「Lueur Coffer」のホームページを作成しました。
+                
               </p>
             </div>
           </a>
-          <div class="none"></div>
+          <a href="hoiku/index.html">
+            <div class="card-image"><img src="img/mock-up5.jpg" alt="保育士向けイラストサイト"></div>
+            <div class="card-content">
+              <h3>保育士向けの塗り絵イラスト配布サイト</h3>
+              <p>
+                保育士や保護者向けの塗り絵素材配布サイトを作成しました。
+              </p>
+            </div>
+          </a>
         </div>
+
+
+
+        
   
       </section>
   
       <section id="works">
-        <h3>Works</h3>
+        <h2>Works</h2>
         <div class="portfolio-cards">
           <a href="oc/index.html">
             <div class="card-image"><img src="img/mock-up3.png" alt="UX改善"></div>
             <div class="card-content">
-              <h4>UI/UX改善を目的としたデザイン改修</h4>
+              <h3>企画ページのデザイン改修</h3>
               <p>
                 ユーザーの導線と情報構造をゼロから見直し、迷わず目的へ到達できる体験を追求した設計事例です。<br><br>
                 ※守秘義務およびプライバシー保護のため、掲載にあたってバナーデザインや名称等の詳細は架空のものに差し替えておりますが、
@@ -201,30 +203,40 @@
           <a href="field/index.html">
             <div class="card-image"><img src="img/mock-up4.png" alt="コンテンツ制作"></div>
             <div class="card-content">
-              <h4>コンテンツの作成</h4>
+              <h3>コンテンツの作成</h3>
               <p>
-                人気低迷が懸念される分野に対し、高校生の心理的ハードルを下げるための「親しみやすさ」を最優先に設計しました。
-                SEOで間口を広げつつ、「この仕事、いいかも」と思えるきっかけをデザインとライティングの両面からアプローチ。
+                人気低迷が懸念される分野に対してのフォロー施策として作成したコンテンツです。
               </p>
             </div>
           </a>
         </div>
       </section>
   
-  
+      <!-- <section id="another">
+        <h2>Another</h2>
+        <div class="portfolio-cards">
+          <a href="cafe/index.html">
+            <div class="card-image"><img src="img/koto.png" alt="UX改善"></div>
+            <div class="card-content">
+              <h3>イベント告知チラシ</h3>
+              <p>
+                地域のお琴教室の発表会チラシを作成しました。
+              </p>
+            </div>
+          </a>
+          <div class="none"></div>
+        </div>
+      </section> -->
   
     
   
     </div>
-  </div>
+
 
 
   <footer>
     <div class="email-container">
-      <!-- <div class="hover">
-        <img src="img/mail.png" alt="" class="button-gif">
-        <a href="#" class="gmail-button">お問い合わせはこちら</a>
-      </div> -->
+
 
     </div>
     <p>2026 | aita chiharu portfolio</p>

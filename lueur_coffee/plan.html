@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation | Lueur Coffee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Noto+Serif+JP:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f9f7f2;
+            --text: #2c2c2c;
+            --accent: #8d775f;
+            --white: #ffffff;
+            --font-en: 'Playfair Display', serif;
+            --font-jp: 'Noto Serif JP', serif;
+            --transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-jp);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .res-wrapper {
+            background: var(--white);
+            width: 100%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* 左側：イメージ・案内エリア */
+        .res-info {
+            background: var(--accent);
+            color: var(--white);
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .res-info h1 {
+            font-family: var(--font-en);
+            font-size: 2.5rem;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.2;
+        }
+        .res-info p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 20px;
+        }
+        .res-note {
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+        }
+
+        /* 右側：フォームエリア */
+        .res-form {
+            padding: 60px 50px;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        /* 入力要素のスタイル */
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            font-family: inherit;
+            font-size: 1rem;
+            background: transparent;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+        input:focus, select:focus {
+            border-bottom-color: var(--text);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* 座席選択（チップス型デザイン） */
+        .seat-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+        .seat-option {
+            flex: 1;
+            min-width: 100px;
+        }
+        .seat-option input {
+            display: none;
+        }
+        .seat-option label {
+            display: block;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid var(--border);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .seat-option input:checked + label {
+            background: var(--text);
+            color: var(--white);
+            border-color: var(--text);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--text);
+            color: var(--white);
+            border: none;
+            padding: 20px;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .res-wrapper { grid-template-columns: 1fr; }
+            .res-info { padding: 40px; }
+            .res-form { padding: 40px 30px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="res-wrapper">
+        <div class="res-info">
+            <div>
+                <h1>Reserve<br>your light.</h1>
+                <p>自分自身と向き合う、<br>穏やかな時間をご予約ください。</p>
+            </div>
+            <div class="res-note">
+                <p>※ご予約は1時間単位で承ります。<br>※当日キャンセルは、お電話にてご連絡ください。</p>
+            </div>
+        </div>
+
+        <form class="res-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">DATE</label>
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">TIME</label>
+                    <select required>
+                        <option value="">選択してください</option>
+                        <option>09:00 - 10:00</option>
+                        <option>10:00 - 11:00</option>
+                        <option>13:00 - 14:00</option>
+                        <option>15:00 - 16:00</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">GUESTS</label>
+                <input type="number" min="1" max="4" placeholder="1" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">PREFERRED SEAT</label>
+                <div class="seat-options">
+                    <div class="seat-option">
+                        <input type="radio" name="seat" id="window" checked>
+                        <label for="window">窓際席</label>
+                    </div>
+                    <div class="seat-option">
+                        <input type="radio" name="seat" id="sofa">
+                        <label for="sofa">ソファ席</label>
+                    </div>
+                    <div class="seat-option">
+                        <input type="radio" name="seat" id="counter">
+                        <label for="counter">カウンター</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">NAME</label>
+                <input type="text" placeholder="お名前を入力してください" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">MESSAGE</label>
+                <textarea rows="2" placeholder="アレルギーやご要望があればご記入ください"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">予約確認</button>
+        </form>
+    </div>
+
+</body>
+</html>

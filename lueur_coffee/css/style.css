@@ -306,4 +306,5 @@
             .access-container { display: block;}
             .map-mock {min-height: auto; margin-top: 60px;}
             .hero{margin-top: 80px;}
+            .menu, .concept-grid{padding: 60px 10%;}
         }
